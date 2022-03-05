@@ -1,0 +1,122 @@
+[
+  {
+    "teamId": 11,
+    "teamName": "Grêmio",
+    "scoringScore": 11.464285714285715,
+    "concedingScore": 17.646428571428572
+  },
+  {
+    "teamId": 19,
+    "teamName": "Palmeiras",
+    "scoringScore": 17.646428571428572,
+    "concedingScore": 11.464285714285715
+  },
+  {
+    "teamId": 2,
+    "teamName": "Atlético-PR",
+    "scoringScore": 18.75,
+    "concedingScore": 12.407142857142858
+  },
+  {
+    "teamId": 8,
+    "teamName": "Atlético-MG",
+    "scoringScore": 12.407142857142858,
+    "concedingScore": 18.75
+  },
+  {
+    "teamId": 15,
+    "teamName": "Corinthians",
+    "scoringScore": 15.63095238095238,
+    "concedingScore": 5.4
+  },
+  {
+    "teamId": 13,
+    "teamName": "Botafogo",
+    "scoringScore": 5.4,
+    "concedingScore": 15.63095238095238
+  },
+  {
+    "teamId": 20,
+    "teamName": "Vasco",
+    "scoringScore": 13.55952380952381,
+    "concedingScore": 17.1
+  },
+  {
+    "teamId": 7,
+    "teamName": "Flamengo",
+    "scoringScore": 17.1,
+    "concedingScore": 13.55952380952381
+  },
+  {
+    "teamId": 1,
+    "teamName": "Fortaleza",
+    "scoringScore": 14.857142857142858,
+    "concedingScore": 11.785714285714286
+  },
+  {
+    "teamId": 4,
+    "teamName": "Internacional",
+    "scoringScore": 11.785714285714286,
+    "concedingScore": 14.857142857142858
+  },
+  {
+    "teamId": 14,
+    "teamName": "Bahia",
+    "scoringScore": 32.30952380952381,
+    "concedingScore": 6.1499999999999995
+  },
+  {
+    "teamId": 17,
+    "teamName": "Goiás",
+    "scoringScore": 6.1499999999999995,
+    "concedingScore": 32.30952380952381
+  },
+  {
+    "teamId": 24,
+    "teamName": "Chapecoense",
+    "scoringScore": 24.047619047619047,
+    "concedingScore": 9.225
+  },
+  {
+    "teamId": 26,
+    "teamName": "Avaí",
+    "scoringScore": 9.225,
+    "concedingScore": 24.047619047619047
+  },
+  {
+    "teamId": 22,
+    "teamName": "Cruzeiro",
+    "scoringScore": 8.714285714285715,
+    "concedingScore": 27.57857142857143
+  },
+  {
+    "teamId": 9,
+    "teamName": "Santos",
+    "scoringScore": 27.57857142857143,
+    "concedingScore": 8.714285714285715
+  },
+  {
+    "teamId": 12,
+    "teamName": "Fluminense",
+    "scoringScore": 29.595238095238095,
+    "concedingScore": 2.3142857142857145
+  },
+  {
+    "teamId": 27,
+    "teamName": "CSA",
+    "scoringScore": 2.3142857142857145,
+    "concedingScore": 29.595238095238095
+  },
+  {
+    "teamId": 18,
+    "teamName": "São Paulo",
+    "scoringScore": 21.82142857142857,
+    "concedingScore": 8.196428571428573
+  },
+  {
+    "teamId": 6,
+    "teamName": "Ceará",
+    "scoringScore": 8.196428571428573,
+    "concedingScore": 21.82142857142857
+  }
+]

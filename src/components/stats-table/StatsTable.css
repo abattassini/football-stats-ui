@@ -1,0 +1,20 @@
+.stats-table {
+  font-size: 35px;
+  text-align: center;
+}
+
+.stats-table .column-team-name {
+  width: 20vw;
+}
+
+.stats-table .column-scoring-score {
+  width: 15vw;
+}
+
+.stats-table .column-conceding-score {
+  width: 15vw;
+}
+
+.stats-table .logo-img {
+  width: 3vw;
+}
