@@ -3,11 +3,11 @@ import React from "react";
 import "./Dropdown.css";
 
 export const Dropdown = (props) => {
-  const { options } = props;
+  const { options, ...rest } = props;
 
   return (
-    <select className="dropdown">
-      {options.map(({ optionLabel, optionValue, key }) => {
+    <select className="dropdown" {...rest}>
+      {options.map(({ optionLabel, optionValue }, key) => {
         return (
           <option key={key} value={optionValue}>
             {optionLabel}
