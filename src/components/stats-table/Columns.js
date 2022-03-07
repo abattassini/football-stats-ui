@@ -7,25 +7,33 @@ export const Columns = [
     accessor: "teamId",
     className: "column-logo",
     disableSortBy: true,
-    Cell: ({ cell: { value } }) => (
-      <img className="logo-img" src={getLogoById(value)} alt="TODO"></img>
+    reverseSort: false,
+    Cell: (props) => (
+      <img
+        className="logo-img"
+        src={getLogoById(props.row.original.teamId.toString())}
+        alt={`Logo of Team ${props.row.original.teamName.toString()}`}
+      ></img>
     ),
   },
   {
     Header: "Team Name",
     accessor: "teamName",
+    reverseSort: false,
     className: "column-team-name",
   },
   {
     Header: "Scoring",
     accessor: "scoringScore",
     className: "column-scoring-score",
+    reverseSort: true,
     Cell: ({ cell: { value } }) => getScoreRank(value),
   },
   {
     Header: "Conceding",
     accessor: "concedingScore",
     className: "column-conceding-score",
+    reverseSort: true,
     Cell: ({ cell: { value } }) => getScoreRank(value),
   },
 ];

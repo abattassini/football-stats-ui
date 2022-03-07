@@ -44,6 +44,12 @@ export const StatsTable = (props) => {
                           {column.canSort &&
                             (column.isSorted ? (
                               column.isSortedDesc ? (
+                                column.reverseSort ? (
+                                  <TiIcons.TiArrowSortedUp />
+                                ) : (
+                                  <TiIcons.TiArrowSortedDown />
+                                )
+                              ) : column.reverseSort ? (
                                 <TiIcons.TiArrowSortedDown />
                               ) : (
                                 <TiIcons.TiArrowSortedUp />
