@@ -1,5 +1,5 @@
 import { getLogoById } from "../../utils/logoById";
-import { getScoreRank } from "../../utils/scoreRanks";
+import { getScoreRank } from "../../utils";
 
 export const Columns = [
   {

@@ -1,28 +1,28 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { selectMatchday } from "../actions";
+import { selectMatchday, updateMatchdayScores } from "../actions";
+import { getMatchdayOptions } from "../utils";
 
 import { Dropdown } from "../components/Dropdown";
 import { StatsTable } from "../components/stats-table/StatsTable";
+import { getMatchdayScores } from "../services/api";
 
 export const MatchdayStats = () => {
-  const matchdayOptions = [
-    { optionValue: 1, optionLabel: "Matchday 1" },
-    { optionValue: 2, optionLabel: "Matchday 2" },
-    { optionValue: 3, optionLabel: "Matchday 3" },
-    { optionValue: 4, optionLabel: "Matchday 4" },
-    { optionValue: 5, optionLabel: "Matchday 5" },
-    { optionValue: 6, optionLabel: "Matchday 6" },
-  ];
+  const matchdayOptions = getMatchdayOptions();
 
   const exampleData = require("../data/example/stats1.json");
 
   const selectedMatchday = useSelector((state) => state.selectedMatchday);
+  const matchdayScores = useSelector((state) => state.matchdayScores);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  React.useEffect(async () => {
     console.log(`Calling api for matchday ${selectedMatchday} stats.`);
+    const matchdayScores = await getMatchdayScores(selectedMatchday, 2019);
+    if (matchdayScores.matchdayScores) {
+      dispatch(updateMatchdayScores(matchdayScores.matchdayScores));
+    }
   }, [selectedMatchday]);
 
   return (
@@ -37,7 +37,7 @@ export const MatchdayStats = () => {
         </Col>
       </Row>
       <Row md="auto" className="justify-content-md-center mt-4">
-        <Col>{exampleData && <StatsTable scores={exampleData} />}</Col>
+        <Col>{exampleData && <StatsTable scores={matchdayScores} />}</Col>
       </Row>
     </section>
   );

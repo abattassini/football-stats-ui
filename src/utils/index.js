@@ -17,3 +17,11 @@ export const getScoreRank = (score) => {
     return "G";
   }
 };
+
+export const getMatchdayOptions = () => {
+  let matchdayOptions = [];
+  for (let i = 5; i <= 38; i++) {
+    matchdayOptions.push({ optionValue: i, optionLabel: `Matchday ${i}` });
+  }
+  return matchdayOptions;
+};

@@ -4,3 +4,10 @@ export const selectMatchday = (matchdayNumber) => {
     payload: matchdayNumber,
   };
 };
+
+export const updateMatchdayScores = (matchdayScores) => {
+  return {
+    type: "MATCHDAY_SCORES",
+    payload: matchdayScores,
+  };
+};
