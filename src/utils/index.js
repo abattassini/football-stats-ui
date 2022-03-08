@@ -1,15 +1,15 @@
 export const getScoreRank = (score) => {
-  if (score >= 35) {
+  if (score >= 95) {
     return "A+";
-  } else if (score >= 30) {
+  } else if (score >= 80) {
     return "A";
-  } else if (score >= 25) {
+  } else if (score >= 65) {
     return "B";
-  } else if (score >= 20) {
+  } else if (score >= 50) {
     return "C";
-  } else if (score >= 15) {
+  } else if (score >= 35) {
     return "D";
-  } else if (score >= 10) {
+  } else if (score >= 20) {
     return "E";
   } else if (score >= 5) {
     return "F";
