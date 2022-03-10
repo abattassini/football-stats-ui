@@ -1,0 +1,29 @@
+.row-info {
+  font-size: 20px;
+  text-align: left;
+}
+
+.row-info .season-stats {
+  margin-left: 3vw;
+}
+
+.row-info .dot-icon,
+.row-info .right-align {
+  text-align: right;
+}
+
+.row-info .center-align {
+  text-align: center;
+}
+
+.row-info .left-align {
+  text-align: left;
+}
+
+.row-info .right-margin {
+  margin-right: 0.75vw;
+}
+
+.row-info .left-margin {
+  margin-left: 0.75vw;
+}

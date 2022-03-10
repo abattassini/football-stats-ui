@@ -25,3 +25,13 @@ export const getMatchdayOptions = () => {
   }
   return matchdayOptions;
 };
+
+export const getMatchdayScores = (matchdayScores, teamId) => {
+  for (let i = 0; i < matchdayScores.length; i++) {
+    const element = matchdayScores[i];
+    if (element.teamId === teamId) {
+      return element;
+    }
+  }
+  return null;
+};

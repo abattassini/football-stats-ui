@@ -11,8 +11,6 @@ import { getMatchdayScores } from "../services/api";
 export const MatchdayStats = () => {
   const matchdayOptions = getMatchdayOptions();
 
-  const exampleData = require("../data/example/stats1.json");
-
   const selectedMatchday = useSelector((state) => state.selectedMatchday);
   const matchdayScores = useSelector((state) => state.matchdayScores);
   const dispatch = useDispatch();
@@ -37,7 +35,7 @@ export const MatchdayStats = () => {
         </Col>
       </Row>
       <Row md="auto" className="justify-content-md-center mt-4">
-        <Col>{exampleData && <StatsTable scores={matchdayScores} />}</Col>
+        <Col>{matchdayScores && <StatsTable scores={matchdayScores} />}</Col>
       </Row>
     </section>
   );

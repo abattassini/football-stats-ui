@@ -1,14 +1,19 @@
 import React, { useMemo } from "react";
-import { useFilters, useTable, useSortBy } from "react-table";
+import { useExpanded, useFilters, useSortBy, useTable } from "react-table";
+import { useSelector, useDispatch } from "react-redux";
 import { Columns } from "./Columns";
 import * as TiIcons from "react-icons/ti";
 import { Table } from "reactstrap";
+import { RowInfo } from "./RowInfo";
+import { getMatchdayScores } from "../../utils";
 
 import "./StatsTable.css";
 
 export const StatsTable = (props) => {
   const columns = useMemo(() => Columns, []);
   const data = useMemo(() => props.scores, [props.scores]);
+
+  const matchdayScores = useSelector((state) => state.matchdayScores);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
@@ -17,7 +22,8 @@ export const StatsTable = (props) => {
         data,
       },
       useFilters,
-      useSortBy
+      useSortBy,
+      useExpanded
     );
 
   return (
@@ -70,19 +76,37 @@ export const StatsTable = (props) => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      {...cell.getCellProps([
-                        { className: cell.column.className },
-                      ])}
-                    >
-                      {cell.render("Cell")}
+              <>
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td
+                        {...cell.getCellProps([
+                          { className: cell.column.className },
+                        ])}
+                      >
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
+                </tr>
+                {row.isExpanded && (
+                  <tr>
+                    <td colSpan={5}>
+                      <RowInfo
+                        teamScores={getMatchdayScores(
+                          matchdayScores,
+                          row.original.teamId
+                        )}
+                        opponentScores={getMatchdayScores(
+                          matchdayScores,
+                          row.original.opponentId
+                        )}
+                      />
                     </td>
-                  );
-                })}
-              </tr>
+                  </tr>
+                )}
+              </>
             );
           })}
         </tbody>

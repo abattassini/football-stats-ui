@@ -1,9 +1,23 @@
 import { getLogoById } from "../../utils/logoById";
 import { getScoreRank } from "../../utils";
+import * as BsIcons from "react-icons/bs";
 
 export const Columns = [
   {
-    Header: " ",
+    Header: () => null,
+    id: "expander",
+    Cell: ({ row }) => (
+      <span {...row.getToggleRowExpandedProps()}>
+        {row.isExpanded ? (
+          <BsIcons.BsChevronDown />
+        ) : (
+          <BsIcons.BsChevronRight />
+        )}
+      </span>
+    ),
+  },
+  {
+    Header: () => null,
     accessor: "teamId",
     className: "column-logo",
     disableSortBy: true,
