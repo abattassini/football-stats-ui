@@ -1,3 +1,8 @@
+.app-logo {
+  width: 450px;
+  margin: auto;
+}
+
 .sidebar .top-bar {
   background: #15171c;
   height: 80px;
@@ -59,7 +64,7 @@ nav {
   list-style: none;
   height: 60px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .menu-item:hover {
@@ -89,16 +94,16 @@ nav {
 .menu-label,
 .submenu-label {
   margin-left: 16px;
-  font-size: 18px;
+  font-size: 25px;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1700px) {
   nav {
-    width: 20vw;
+    width: 22vw;
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1450px) {
   nav {
     width: 25vw;
   }

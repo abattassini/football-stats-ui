@@ -5,15 +5,19 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import { SubMenu } from "./SubMenu";
 import { IconContext } from "react-icons/lib";
+import { useSelector, useDispatch } from "react-redux";
+import { updateSidebarState } from "../../actions";
+import logo from "../../images/logo.png";
 
 import "./Sidebar.css";
 
 export const Sidebar = ({ callback }) => {
-  const [sidebar, setSidebar] = useState(false);
+  const openCloseSidebar = useSelector((state) => state.openCloseSidebar);
+
+  const dispatch = useDispatch();
 
   const showSidebar = () => {
-    callback(!sidebar);
-    setSidebar(!sidebar);
+    dispatch(updateSidebarState(!openCloseSidebar));
   };
 
   return (
@@ -23,10 +27,13 @@ export const Sidebar = ({ callback }) => {
           <Link className="open-close-button" to="#">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          <img className="app-logo" src={logo}></img>
         </div>
         <nav
-          className={`scroll-invisible ${sidebar ? "opened" : "closed"}`}
-          sidebar={sidebar}
+          className={`scroll-invisible ${
+            openCloseSidebar ? "opened" : "closed"
+          }`}
+          sidebar={openCloseSidebar}
         >
           <div className="wrap">
             <Link className="open-close-button" to="#">
@@ -35,11 +42,7 @@ export const Sidebar = ({ callback }) => {
             {SidebarData.map((item, index) => {
               return (
                 <>
-                  <SubMenu
-                    item={item}
-                    key={index}
-                    closeSidebarFunction={showSidebar}
-                  />
+                  <SubMenu item={item} key={index} />
                 </>
               );
             })}

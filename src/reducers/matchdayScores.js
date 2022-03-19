@@ -5,7 +5,7 @@ export const matchdayScoresReducer = (state = [], action) => {
     case "MATCHDAY_SCORES":
       return processMatchdayScoresPayload(action.payload);
     default:
-      return [];
+      return state;
   }
 };
 

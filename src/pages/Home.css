@@ -1,0 +1,19 @@
+.home-page h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.home-page a {
+  color: white;
+}
+
+.home-page a:hover {
+  color: lightgray;
+}
+
+.home-page {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  width: 1200px;
+}

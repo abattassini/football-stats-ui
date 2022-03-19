@@ -3,22 +3,21 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { useCallback, useState } from "react";
+import { Home } from "./pages/Home";
 import { MatchdayStats } from "./pages/MatchdayStats";
 import { NotImplementedYet } from "./pages/NotImplementedYet";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [isSideBarOpened, setIsSideBarOpened] = useState(false);
-
-  const callback = useCallback((isOpened) => {
-    setIsSideBarOpened(isOpened);
-  }, []);
+  const openCloseSidebar = useSelector((state) => state.openCloseSidebar);
 
   return (
     <div id="app">
       <Router>
-        <Sidebar callback={callback} />
-        <div className={`${isSideBarOpened ? "left-margin" : ""}`}>
+        <Sidebar />
+        <div className={openCloseSidebar ? "margin-left" : ""}>
           <Routes>
+            <Route exact path="/" element={<Home />} />
             <Route exact path="/main" element={<MatchdayStats />} />
             <Route
               exact
