@@ -1,7 +1,7 @@
-export const selectMatchday = (matchdayNumber) => {
+export const selectMatchday = (payload) => {
   return {
     type: "SELECT_MATCHDAY",
-    payload: matchdayNumber,
+    payload: payload,
   };
 };
 

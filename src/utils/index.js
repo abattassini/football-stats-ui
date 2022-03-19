@@ -26,6 +26,15 @@ export const getMatchdayOptions = () => {
   return matchdayOptions;
 };
 
+export const getSeasonYearOptions = () => {
+  let matchdayOptions = [
+    { optionValue: 2018, optionLabel: `Season 2018` },
+    { optionValue: 2019, optionLabel: `Season 2019` },
+    { optionValue: 2020, optionLabel: `Season 2020` },
+  ];
+  return matchdayOptions;
+};
+
 export const getMatchdayScores = (matchdayScores, teamId) => {
   for (let i = 0; i < matchdayScores.length; i++) {
     const element = matchdayScores[i];
