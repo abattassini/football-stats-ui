@@ -30,7 +30,11 @@ export const MatchdayStats = () => {
           <Dropdown
             options={matchdayOptions}
             value={selectedMatchday}
-            onChange={(e) => dispatch(selectMatchday(Number(e.target.value)))}
+            onChange={(e) => {
+              dispatch(selectMatchday(Number(e.target.value)));
+              document.getElementById("scoringRank-dropdown").value = ""; // TODO: find a better way to do this
+              document.getElementById("concedingRank-dropdown").value = ""; // TODO: find a better way to do this
+            }}
           />
         </Col>
       </Row>

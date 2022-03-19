@@ -20,17 +20,18 @@ const ScoreRanks = (rank) => {
   }
 };
 
-const SelectColumnFilter = ({ column: { setFilter } }) => {
+const SelectColumnFilter = ({ column: { setFilter, id } }) => {
   const options = [LIKELY, NEUTRAL, UNLIKELY];
 
   return (
     <select
       className="rank-dropdown"
+      id={`${id}-dropdown`}
       onChange={(e) => {
         setFilter(ScoreRanks(e.target.value) || undefined);
       }}
     >
-      <option value="All">All</option>
+      <option value="">All</option>
       {options.map((option, i) => (
         <option key={i} value={option}>
           {option}
