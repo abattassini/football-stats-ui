@@ -9,9 +9,33 @@ import { getMatchdayScores } from "../../utils";
 
 import "./StatsTable.css";
 
+const DefaultColumnFilter = ({
+  column: { filterValue, preFilteredRows, setFilter },
+}) => {
+  const count = preFilteredRows.length;
+
+  return (
+    <input
+      type="text"
+      value={filterValue || ""}
+      onChange={(e) => {
+        setFilter(e.target.value || undefined);
+      }}
+      placeholder={`Search ${count} records...`}
+    />
+  );
+};
+
 export const StatsTable = (props) => {
   const columns = useMemo(() => Columns, []);
   const data = useMemo(() => props.scores, [props.scores]);
+
+  const defaultColumn = React.useMemo(
+    () => ({
+      Filter: DefaultColumnFilter,
+    }),
+    []
+  );
 
   const matchdayScores = useSelector((state) => state.matchdayScores);
 
@@ -20,6 +44,7 @@ export const StatsTable = (props) => {
       {
         columns,
         data,
+        defaultColumn,
       },
       useFilters,
       useSortBy,
@@ -39,23 +64,22 @@ export const StatsTable = (props) => {
                       {...column.getHeaderProps([
                         {
                           className: column.className,
-                          ...column.getSortByToggleProps(),
                         },
                       ])}
                     >
                       <div>
                         <span>{column.render("Header")}</span>
-                        <span>
+                        <span
+                          {...column.getHeaderProps([
+                            {
+                              ...column.getSortByToggleProps(),
+                            },
+                          ])}
+                        >
                           {" "}
                           {column.canSort &&
                             (column.isSorted ? (
                               column.isSortedDesc ? (
-                                column.reverseSort ? (
-                                  <TiIcons.TiArrowSortedUp />
-                                ) : (
-                                  <TiIcons.TiArrowSortedDown />
-                                )
-                              ) : column.reverseSort ? (
                                 <TiIcons.TiArrowSortedDown />
                               ) : (
                                 <TiIcons.TiArrowSortedUp />
@@ -64,6 +88,9 @@ export const StatsTable = (props) => {
                               <TiIcons.TiArrowUnsorted />
                             ))}
                         </span>
+                      </div>
+                      <div>
+                        {column.canFilter ? column.render("Filter") : null}
                       </div>
                     </th>
                   );

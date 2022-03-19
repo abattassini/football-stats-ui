@@ -4,8 +4,6 @@ import { useMemo } from "react";
 
 import { getLogoById } from "../../utils/logoById";
 
-import "./RowInfo.css";
-
 export const MatchPreview = (props) => {
   const homeTeam = useMemo(() => props.homeTeam, [props.homeTeam]);
   const awayTeam = useMemo(() => props.awayTeam, [props.awayTeam]);
@@ -21,7 +19,7 @@ export const MatchPreview = (props) => {
             <Col md={9}></Col>
             <Col md={3}>
               <img
-                className="logo-img"
+                className="preview-logo-img"
                 src={homeTeamLogo}
                 alt={`Logo of Team ${homeTeam.teamName}`}
               ></img>
@@ -43,7 +41,7 @@ export const MatchPreview = (props) => {
           <Row className="right-align">
             <Col md={3}>
               <img
-                className="logo-img"
+                className="preview-logo-img"
                 src={awayTeamLogo}
                 alt={`Logo of Team ${awayTeam.teamName}`}
               ></img>
@@ -57,6 +55,36 @@ export const MatchPreview = (props) => {
           <Row className="center-align">
             <Col md={4}>Away</Col>
             <Col md={8}></Col>
+          </Row>
+        </Col>
+      </Row>
+      <Row className="season-stats">
+        <Col>
+          <Row>
+            <Col>{`- Scored ${homeTeam.goalsScoredRecently} goals on last 5 matches.`}</Col>
+          </Row>
+          <Row>
+            <Col>{`- Scored ${homeTeam.goalsScoredWholeSeason} goals on the season so far.`}</Col>
+          </Row>
+          <Row>
+            <Col>{`- Conceded ${homeTeam.goalsConcededRecently} goals on last 5 matches.`}</Col>
+          </Row>
+          <Row>
+            <Col>{`- Conceded ${homeTeam.goalsConcededWholeSeason} goals on the season so far.`}</Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col>{`- Scored ${awayTeam.goalsScoredRecently} goals on last 5 matches.`}</Col>
+          </Row>
+          <Row>
+            <Col>{`- Scored ${awayTeam.goalsScoredWholeSeason} goals on the season so far.`}</Col>
+          </Row>
+          <Row>
+            <Col>{`- Conceded ${awayTeam.goalsConcededRecently} goals on last 5 matches.`}</Col>
+          </Row>
+          <Row>
+            <Col>{`- Conceded ${awayTeam.goalsConcededWholeSeason} goals on the season so far.`}</Col>
           </Row>
         </Col>
       </Row>

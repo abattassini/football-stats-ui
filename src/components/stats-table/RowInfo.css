@@ -3,6 +3,10 @@
   text-align: left;
 }
 
+.row-info .preview-logo-img {
+  width: 60px;
+}
+
 .row-info .season-stats {
   margin-left: 3vw;
 }
@@ -26,4 +30,24 @@
 
 .row-info .left-margin {
   margin-left: 0.75vw;
+}
+
+@media (max-width: 1600px) {
+  .row-info .preview-logo-img {
+    width: 50px;
+  }
+
+  .row-info {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .row-info .preview-logo-img {
+    width: 50px;
+  }
+
+  .row-info {
+    font-size: 14px;
+  }
 }
