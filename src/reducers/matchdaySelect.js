@@ -8,3 +8,12 @@ export const matchdaySelectReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const seasonYearForChartReducer = (state = 2019, action) => {
+  switch (action.type) {
+    case "SELECT_YEAR_CHART":
+      return action.payload;
+    default:
+      return state;
+  }
+};

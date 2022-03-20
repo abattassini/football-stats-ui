@@ -1,6 +1,5 @@
 import React from "react";
 import * as AiIcons from "react-icons/ai";
-import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
   {
@@ -20,8 +19,8 @@ export const SidebarData = [
     subNav: [],
   },
   {
-    title: "Other",
-    path: "/not-implemented-yet",
+    title: "Goals Home vs. Away",
+    path: "/goals-scored-home-away",
     icon: <AiIcons.AiFillHome />,
     iconClosed: null,
     iconOpened: null,

@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
@@ -13,9 +12,16 @@ export const Home = () => {
           <p>
             This is a website where you can find predictions about football
             matches.
+          </p>
+          <p>
             <br /> At the moment you can see{" "}
-            <Link to={"/main"}>Predictions of the Brazil League</Link>, seasons
-            2018, 2019 and 2020.
+            <Link to={"/main"}>Predictions of Goal Scoring and Conceding</Link>,
+            and{" "}
+            <Link to="/goals-scored-home-away">
+              a Chart Comparing Goals Scored when Playing Home vs. Away
+            </Link>
+            . The available data is from seasons 2018, 2019 and 2020 of Brazil
+            League.
           </p>
         </Col>
       </Row>
@@ -23,10 +29,7 @@ export const Home = () => {
         <Col>
           <p>
             You can also{" "}
-            <Link to={"/main"}>
-              understand how the predictions are generated
-            </Link>
-            .
+            <Link to={"#"}>understand how the predictions are generated</Link>.
           </p>
         </Col>
       </Row>

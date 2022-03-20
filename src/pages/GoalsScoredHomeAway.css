@@ -1,0 +1,18 @@
+.recharts-tooltip-wrapper .custom-tooltip p {
+  color: white;
+  font-size: 20px;
+  margin: 0;
+  background-color: darkslategray;
+}
+
+.goals-scores-home-away-page .info-section {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  width: 65vw;
+  padding-left: 2.5vw;
+}
+
+.recharts-legend-item {
+  font-size: 20px;
+}

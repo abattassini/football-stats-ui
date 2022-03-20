@@ -1,11 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Sidebar } from "./components/sidebar/Sidebar";
-import { useCallback, useState } from "react";
 import { Home } from "./pages/Home";
 import { MatchdayStats } from "./pages/MatchdayStats";
-import { NotImplementedYet } from "./pages/NotImplementedYet";
+import { GoaldScoredHomeAway } from "./pages/GoalsScoredHomeAway";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -21,8 +19,8 @@ function App() {
             <Route exact path="/main" element={<MatchdayStats />} />
             <Route
               exact
-              path="/not-implemented-yet"
-              element={<NotImplementedYet />}
+              path="/goals-scored-home-away"
+              element={<GoaldScoredHomeAway />}
             />
           </Routes>
         </div>

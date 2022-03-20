@@ -18,3 +18,17 @@ export const updateMatchdayScores = (matchdayScores) => {
     payload: matchdayScores,
   };
 };
+
+export const selectYearChart = (payload) => {
+  return {
+    type: "SELECT_YEAR_CHART",
+    payload: payload,
+  };
+};
+
+export const updateGoalsEachMatchday = (goalsEachMatchday) => {
+  return {
+    type: "GOALS_EACH_MATCHDAY",
+    payload: goalsEachMatchday,
+  };
+};
