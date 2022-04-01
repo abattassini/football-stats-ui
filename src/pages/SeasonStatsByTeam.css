@@ -1,0 +1,17 @@
+.season-stats-by-team-page .recharts-tooltip-wrapper .custom-tooltip p {
+  color: white;
+  font-size: 20px;
+  width: 300px;
+  margin: 0;
+  background-color: darkslategray;
+}
+
+.season-stats-by-team-page label {
+  color: white;
+  font-size: 30px;
+  width: 300px;
+  text-align: center;
+}
+.season-stats-by-team-page {
+  color: white;
+}

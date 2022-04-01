@@ -23,11 +23,8 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .dropdown {
-    font-size: 30px;
-    width: 90%;
-    height: 40px;
-    margin-top: 20px;
+    width: 100%;
   }
 }

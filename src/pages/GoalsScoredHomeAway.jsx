@@ -69,8 +69,8 @@ export const GoaldScoredHomeAway = () => {
           </Col>
         </Row>
       </section>
-      <Row className="justify-content-md-center">
-        <Col md="auto">
+      <Row className="justify-content-center">
+        <Col xs={10} sm="auto">
           <Dropdown
             options={yearOptions}
             value={seasonYearChart}

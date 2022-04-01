@@ -107,6 +107,10 @@ nav {
   nav {
     width: 25vw;
   }
+
+  .app-logo {
+    width: 400px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -117,8 +121,13 @@ nav {
   .submenu-label {
     font-size: 22px;
   }
+
   .submenu-item {
     height: 55px;
+  }
+
+  .app-logo {
+    width: 350px;
   }
 }
 
@@ -132,5 +141,15 @@ nav {
   }
   .submenu-item {
     height: 60px;
+  }
+
+  .app-logo {
+    width: 300px;
+  }
+}
+
+@media (max-width: 380px) {
+  .app-logo {
+    display: none;
   }
 }

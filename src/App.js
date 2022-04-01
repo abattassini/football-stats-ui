@@ -4,6 +4,7 @@ import { Sidebar } from "./components/sidebar/Sidebar";
 import { Home } from "./pages/Home";
 import { MatchdayStats } from "./pages/MatchdayStats";
 import { GoaldScoredHomeAway } from "./pages/GoalsScoredHomeAway";
+import { SeasonStatsByTeam } from "./pages/SeasonStatsByTeam";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -21,6 +22,11 @@ function App() {
               exact
               path="/goals-scored-home-away"
               element={<GoaldScoredHomeAway />}
+            />
+            <Route
+              exact
+              path="/season-stats-by-team"
+              element={<SeasonStatsByTeam />}
             />
           </Routes>
         </div>

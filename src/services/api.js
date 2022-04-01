@@ -25,3 +25,15 @@ export const getGoalsEachMatchday = async (seasonYear) => {
   );
   return response.data;
 };
+
+export const getStatsEachTeamSeason = async (seasonYear) => {
+  const response = await axios.get(
+    "https://localhost:7004/FootballStats/GetStatsEachTeamSeason/",
+    {
+      params: {
+        seasonYear: seasonYear,
+      },
+    }
+  );
+  return response.data;
+};

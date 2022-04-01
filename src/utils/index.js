@@ -27,12 +27,72 @@ export const getMatchdayOptions = () => {
 };
 
 export const getSeasonYearOptions = () => {
-  let matchdayOptions = [
+  let options = [
     { optionValue: 2018, optionLabel: `Season 2018` },
     { optionValue: 2019, optionLabel: `Season 2019` },
     { optionValue: 2020, optionLabel: `Season 2020` },
   ];
-  return matchdayOptions;
+  return options;
+};
+
+export const getStatsOptions = () => {
+  let options = [
+    { optionValue: "goalsScored", optionLabel: "Goals Scored" },
+    { optionValue: "goalsConceded", optionLabel: "Goals Conceded" },
+    { optionValue: "victories", optionLabel: "Wins" },
+    { optionValue: "ties", optionLabel: "Ties" },
+    { optionValue: "losses", optionLabel: "Losses" },
+  ];
+  return options;
+};
+
+export const getMatchLocationOptions = () => {
+  let options = [
+    { optionValue: "Total", optionLabel: "Home + Away" },
+    { optionValue: "Home", optionLabel: "Home" },
+    { optionValue: "Away", optionLabel: "Away" },
+  ];
+  return options;
+};
+
+export const getStatsLabel = (selectedStats) => {
+  let part1;
+  let part2;
+
+  switch (selectedStats.stat) {
+    case "goalsScored":
+      part1 = "Goals Scored";
+      break;
+    case "goalsConceded":
+      part1 = "Goals Conceded";
+      break;
+    case "victories":
+      part1 = "Matches Won";
+      break;
+    case "ties":
+      part1 = "Tied Matches";
+      break;
+    case "losses":
+      part1 = "Matches Lost";
+      break;
+    default:
+      break;
+  }
+  switch (selectedStats.matchLocation) {
+    case "Total":
+      part2 = "this season";
+      break;
+    case "Home":
+      part2 = "playing home this season";
+      break;
+    case "Away":
+      part2 = "playing away this season";
+      break;
+    default:
+      break;
+  }
+
+  return `${part1} ${part2}`;
 };
 
 export const getMatchdayScores = (matchdayScores, teamId) => {

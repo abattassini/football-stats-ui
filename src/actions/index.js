@@ -32,3 +32,17 @@ export const updateGoalsEachMatchday = (goalsEachMatchday) => {
     payload: goalsEachMatchday,
   };
 };
+
+export const updateStatsEachTeamsSeason = (statsEachTeam) => {
+  return {
+    type: "STATS_EACH_TEAM_SEASON",
+    payload: statsEachTeam,
+  };
+};
+
+export const updateStats = (payload) => {
+  return {
+    type: "STATS",
+    payload: payload,
+  };
+};

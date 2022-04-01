@@ -26,4 +26,12 @@ export const SidebarData = [
     iconOpened: null,
     subNav: [],
   },
+  {
+    title: "Teams Stats by Season",
+    path: "/season-stats-by-team",
+    icon: <AiIcons.AiFillHome />,
+    iconClosed: null,
+    iconOpened: null,
+    subNav: [],
+  },
 ];
