@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getMatchdayScores = async (nextMatchday, seasonYear) => {
   const response = await axios.get(
-    "https://localhost:7004/FootballStats/GetTeamsMatchdayScores/",
+    "https://footballstatsapi.azure-api.net/FootballStats/GetTeamsMatchdayScores/",
     {
       params: {
         nextMatchday: nextMatchday,
@@ -16,7 +16,7 @@ export const getMatchdayScores = async (nextMatchday, seasonYear) => {
 
 export const getGoalsEachMatchday = async (seasonYear) => {
   const response = await axios.get(
-    "https://localhost:7004/FootballStats/GetGoalsOfEachMatchday/",
+    "https://footballstatsapi.azure-api.net/FootballStats/GetGoalsOfEachMatchday",
     {
       params: {
         seasonYear: seasonYear,
@@ -28,7 +28,7 @@ export const getGoalsEachMatchday = async (seasonYear) => {
 
 export const getStatsEachTeamSeason = async (seasonYear) => {
   const response = await axios.get(
-    "https://localhost:7004/FootballStats/GetStatsEachTeamSeason/",
+    "https://footballstatsapi.azure-api.net/FootballStats/GetStatsEachTeamSeason",
     {
       params: {
         seasonYear: seasonYear,

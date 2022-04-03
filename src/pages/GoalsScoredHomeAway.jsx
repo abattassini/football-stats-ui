@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getGoalsEachMatchday } from "../services/api";
 import { selectYearChart, updateGoalsEachMatchday } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,6 +19,7 @@ import {
 } from "recharts";
 
 import "./GoalsScoredHomeAway.css";
+import { Loading } from "../components/Loading";
 
 export const GoaldScoredHomeAway = () => {
   const dispatch = useDispatch();
@@ -28,8 +29,11 @@ export const GoaldScoredHomeAway = () => {
   const goalsEachMatchday = useSelector((state) => state.goalsEachMatchday);
   const seasonYearChart = useSelector((state) => state.seasonYearChart);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(async () => {
     console.log(`Calling api for goals of season ${seasonYearChart} stats.`);
+    setIsLoading(true);
     const goalsEachMatchdayResponse = await getGoalsEachMatchday(
       seasonYearChart
     );
@@ -37,6 +41,7 @@ export const GoaldScoredHomeAway = () => {
       dispatch(
         updateGoalsEachMatchday(goalsEachMatchdayResponse.matchdayGoals)
       );
+      setIsLoading(false);
     }
   }, [seasonYearChart, dispatch]);
 
@@ -74,51 +79,56 @@ export const GoaldScoredHomeAway = () => {
           <Dropdown
             options={yearOptions}
             value={seasonYearChart}
+            disabled={isLoading}
             onChange={(e) => {
               dispatch(selectYearChart(Number(e.target.value)));
             }}
           />
         </Col>
       </Row>
-      <Row className="mx-auto mt-5">
-        <Col sm={2}></Col>
-        <Col sm={8}>
-          {goalsEachMatchday && goalsEachMatchday.length > 0 ? (
-            <ResponsiveContainer width="100%" height={440}>
-              <AreaChart data={goalsEachMatchday}>
-                <Area
-                  name="Goals Scored Playing at Home"
-                  dataKey="goalsScoredHome"
-                  stroke="yellow"
-                  fill="yellow"
-                />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Row className="mx-auto mt-5">
+          <Col sm={2}></Col>
+          <Col sm={8}>
+            {goalsEachMatchday && goalsEachMatchday.length > 0 ? (
+              <ResponsiveContainer width="100%" height={440}>
+                <AreaChart data={goalsEachMatchday}>
+                  <Area
+                    name="Goals Scored Playing at Home"
+                    dataKey="goalsScoredHome"
+                    stroke="yellow"
+                    fill="yellow"
+                  />
 
-                <Area
-                  name="Goals Scored Playing Away"
-                  dataKey="goalsScoredAway"
-                  stroke="#03a9f4"
-                  fill="blue"
-                />
+                  <Area
+                    name="Goals Scored Playing Away"
+                    dataKey="goalsScoredAway"
+                    stroke="#03a9f4"
+                    fill="blue"
+                  />
 
-                <XAxis dataKey="matchday" stroke="white"></XAxis>
+                  <XAxis dataKey="matchday" stroke="white"></XAxis>
 
-                <YAxis stroke="white" />
-                <Legend
-                  iconSize={10}
-                  wrapperStyle={{
-                    paddingTop: "20px",
-                  }}
-                />
-                <Brush fill="#3a383c" stroke="#a9a9a9" />
-                <Tooltip
-                  content={<CustomTooltip />}
-                  contentStyle={{ color: "white" }}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          ) : null}
-        </Col>
-      </Row>
+                  <YAxis stroke="white" />
+                  <Legend
+                    iconSize={10}
+                    wrapperStyle={{
+                      paddingTop: "20px",
+                    }}
+                  />
+                  <Brush fill="#3a383c" stroke="#a9a9a9" />
+                  <Tooltip
+                    content={<CustomTooltip />}
+                    contentStyle={{ color: "white" }}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            ) : null}
+          </Col>
+        </Row>
+      )}
     </div>
   );
 };

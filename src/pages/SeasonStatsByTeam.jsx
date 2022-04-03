@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getStatsEachTeamSeason } from "../services/api";
 import {
   selectYearChart,
@@ -27,6 +27,7 @@ import {
 } from "recharts";
 import { useWindowSize } from "../hooks/useWindowSize";
 import { getLogoById } from "../utils/logoById";
+import { Loading } from "../components/Loading";
 
 import "./SeasonStatsByTeam.css";
 
@@ -51,10 +52,13 @@ export const SeasonStatsByTeam = () => {
     return windowSize.width < 992;
   });
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(async () => {
     console.log(
       `Calling api for each team stats of season ${seasonYearChart}.`
     );
+    setIsLoading(true);
     const statsEachTeamSeasonResponse = await getStatsEachTeamSeason(
       seasonYearChart
     );
@@ -62,8 +66,8 @@ export const SeasonStatsByTeam = () => {
       dispatch(
         updateStatsEachTeamsSeason(statsEachTeamSeasonResponse.statsEachTeam)
       );
+      setIsLoading(false);
     }
-    console.log(statsEachTeamSeason);
   }, [seasonYearChart, dispatch]);
 
   const CustomTooltip = ({ active, payload }) => {
@@ -108,6 +112,7 @@ export const SeasonStatsByTeam = () => {
           <Dropdown
             options={statsOptions}
             value={selectedStats.stat}
+            disabled={isLoading}
             onChange={(e) => {
               dispatch(
                 updateStats({
@@ -122,6 +127,7 @@ export const SeasonStatsByTeam = () => {
           <Dropdown
             options={matchLocationOptions}
             value={selectedStats.matchLocation}
+            disabled={isLoading}
             onChange={(e) => {
               dispatch(
                 updateStats({
@@ -139,85 +145,90 @@ export const SeasonStatsByTeam = () => {
             onChange={(e) => {
               dispatch(selectYearChart(Number(e.target.value)));
             }}
+            disabled={isLoading}
           />
         </Col>
       </Row>
-      <Row>
-        <Col xs={0} md={2}></Col>
-        <Col xs={12} md={8}>
-          <ResponsiveContainer
-            width="100%"
-            height={smallWindowWidth ? 1200 : 1000}
-          >
-            <ComposedChart
-              layout="vertical"
-              width={500}
-              height={930}
-              data={statsEachTeamSeason}
-              margin={{
-                top: 20,
-                right: 40,
-                bottom: 50,
-                left: 20,
-              }}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Row>
+          <Col xs={0} md={2}></Col>
+          <Col xs={12} md={8}>
+            <ResponsiveContainer
+              width="100%"
+              height={smallWindowWidth ? 1200 : 1000}
             >
-              <CartesianGrid stroke="white" />
-              <XAxis
-                type="number"
-                domain={
-                  smallWindowWidth
-                    ? [0, "auto"]
-                    : selectedStats.stat.includes("goals")
-                    ? [0, 100]
-                    : [0, 30]
-                }
-                tick={{ fill: "white", fontSize: "20px" }}
-              >
-                <Label
-                  value={getStatsLabel(selectedStats)}
-                  fill="white"
-                  fontSize="20px"
-                  position="bottom"
-                />
-              </XAxis>
-              <YAxis
-                yAxisId={0}
-                dataKey={smallWindowWidth ? "teamId" : "teamName"}
-                interval={0}
-                type="category"
-                width={smallWindowWidth ? 50 : 130}
-                tick={
-                  smallWindowWidth ? (
-                    <CustomTickLogo />
-                  ) : (
-                    { fill: "white", fontSize: "23px" }
-                  )
-                }
-              />
-              <YAxis
-                yAxisId={1}
-                dataKey={selectedStats.stat + selectedStats.matchLocation}
-                orientation="right"
-                type="category"
-                width={50}
-                mirror
-                tick={{
-                  fill: "white",
-                  fontSize: "23px",
-                  transform: `translate(45, 0)`,
+              <ComposedChart
+                layout="vertical"
+                width={500}
+                height={930}
+                data={statsEachTeamSeason}
+                margin={{
+                  top: 20,
+                  right: 40,
+                  bottom: 50,
+                  left: 20,
                 }}
-              />
-              <Tooltip content={<CustomTooltip />} />
-              <Bar
-                dataKey={selectedStats.stat + selectedStats.matchLocation}
-                barSize={20}
-                fill="blue"
-              />
-            </ComposedChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col xs={0} md={2}></Col>
-      </Row>
+              >
+                <CartesianGrid stroke="white" />
+                <XAxis
+                  type="number"
+                  domain={
+                    smallWindowWidth
+                      ? [0, "auto"]
+                      : selectedStats.stat.includes("goals")
+                      ? [0, 100]
+                      : [0, 30]
+                  }
+                  tick={{ fill: "white", fontSize: "20px" }}
+                >
+                  <Label
+                    value={getStatsLabel(selectedStats)}
+                    fill="white"
+                    fontSize="20px"
+                    position="bottom"
+                  />
+                </XAxis>
+                <YAxis
+                  yAxisId={0}
+                  dataKey={smallWindowWidth ? "teamId" : "teamName"}
+                  interval={0}
+                  type="category"
+                  width={smallWindowWidth ? 50 : 130}
+                  tick={
+                    smallWindowWidth ? (
+                      <CustomTickLogo />
+                    ) : (
+                      { fill: "white", fontSize: "23px" }
+                    )
+                  }
+                />
+                <YAxis
+                  yAxisId={1}
+                  dataKey={selectedStats.stat + selectedStats.matchLocation}
+                  orientation="right"
+                  type="category"
+                  width={50}
+                  mirror
+                  tick={{
+                    fill: "white",
+                    fontSize: "23px",
+                    transform: `translate(45, 0)`,
+                  }}
+                />
+                <Tooltip content={<CustomTooltip />} />
+                <Bar
+                  dataKey={selectedStats.stat + selectedStats.matchLocation}
+                  barSize={20}
+                  fill="blue"
+                />
+              </ComposedChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col xs={0} md={2}></Col>
+        </Row>
+      )}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMatchday, updateMatchdayScores } from "../actions";
 import { getMatchdayOptions, getSeasonYearOptions } from "../utils";
@@ -7,6 +8,7 @@ import { getMatchdayOptions, getSeasonYearOptions } from "../utils";
 import { Dropdown } from "../components/Dropdown";
 import { StatsTable } from "../components/stats-table/StatsTable";
 import { getMatchdayScores } from "../services/api";
+import { Loading } from "../components/Loading";
 
 export const MatchdayStats = () => {
   const matchdayOptions = getMatchdayOptions();
@@ -16,14 +18,18 @@ export const MatchdayStats = () => {
   const matchdayScores = useSelector((state) => state.matchdayScores);
   const dispatch = useDispatch();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   React.useEffect(async () => {
     console.log(`Calling api for matchday ${selectedMatchday.matchday} stats.`);
+    setIsLoading(true);
     const matchdayScores = await getMatchdayScores(
       selectedMatchday.matchday,
       selectedMatchday.seasonYear
     );
     if (matchdayScores.matchdayScores) {
       dispatch(updateMatchdayScores(matchdayScores.matchdayScores));
+      setIsLoading(false);
     }
   }, [selectedMatchday]);
 
@@ -39,6 +45,7 @@ export const MatchdayStats = () => {
           <Dropdown
             options={yearOptions}
             value={selectedMatchday.seasonYear}
+            disabled={isLoading}
             onChange={(e) => {
               dispatch(
                 selectMatchday({
@@ -54,6 +61,7 @@ export const MatchdayStats = () => {
           <Dropdown
             options={matchdayOptions}
             value={selectedMatchday.matchday}
+            disabled={isLoading}
             onChange={(e) => {
               dispatch(
                 selectMatchday({
@@ -66,9 +74,13 @@ export const MatchdayStats = () => {
           />
         </Col>
       </Row>
-      <Row md="auto" className="justify-content-md-center mt-4">
-        <Col>{matchdayScores && <StatsTable scores={matchdayScores} />}</Col>
-      </Row>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Row md="auto" className="justify-content-md-center mt-4">
+          <Col>{matchdayScores && <StatsTable scores={matchdayScores} />}</Col>
+        </Row>
+      )}
     </section>
   );
 };
