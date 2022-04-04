@@ -17,7 +17,7 @@ export const Home = () => {
             Brazil League, but it could be expanded to any football league.
           </p>
           <p>
-            At the moment you can see:
+            At the moment you can see the following pages:
             <ul>
               <li>
                 <Link to={"/main"}>
@@ -29,9 +29,10 @@ export const Home = () => {
               </li>
               <li>
                 <Link to="/goals-scored-home-away">
-                  A Comparison of Goals Scored when Playing Home vs. Away
+                  Goals Scored when Playing Home vs. Away
                 </Link>
-                .
+                , where you can see a cartesian area chart comparing total goals
+                scored on each matchday of the season you select.
               </li>
               <li>
                 <Link to="/season-stats-by-team">Season Stats By Team</Link>,
