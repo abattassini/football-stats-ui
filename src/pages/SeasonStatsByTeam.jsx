@@ -55,9 +55,6 @@ export const SeasonStatsByTeam = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(async () => {
-    console.log(
-      `Calling api for each team stats of season ${seasonYearChart}.`
-    );
     setIsLoading(true);
     const statsEachTeamSeasonResponse = await getStatsEachTeamSeason(
       seasonYearChart

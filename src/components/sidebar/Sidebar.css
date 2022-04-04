@@ -105,7 +105,7 @@ nav {
 
 @media (max-width: 1450px) {
   nav {
-    width: 25vw;
+    width: 27vw;
   }
 
   .app-logo {
@@ -113,9 +113,15 @@ nav {
   }
 }
 
+@media (max-width: 1200px) {
+  nav {
+    width: 32vw;
+  }
+}
+
 @media (max-width: 1024px) {
   nav {
-    width: 50vw;
+    width: 35vw;
   }
   .menu-label,
   .submenu-label {

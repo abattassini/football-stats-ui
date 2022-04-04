@@ -14,10 +14,10 @@ export const MatchPreview = (props) => {
   return (
     <div className="match-preview">
       <Row>
-        <Col md={5} className="right-align">
-          <Row className="left-align">
-            <Col md={9}></Col>
-            <Col md={3}>
+        <Col xs={5} className="right-align">
+          <Row className="center-align">
+            <Col xs={4} sm={5} md={6} xl={7} xxl={8}></Col>
+            <Col xs={8} sm={7} md={6} xl={5} xxl={4}>
               <img
                 className="preview-logo-img"
                 src={homeTeamLogo}
@@ -26,35 +26,43 @@ export const MatchPreview = (props) => {
             </Col>
           </Row>
           <Row className="center-align">
-            <Col md={8}></Col>
-            <Col md={4}>{homeTeam.teamName}</Col>
+            <Col xs={4} sm={6} xl={7} xxl={8}></Col>
+            <Col xs={8} sm={6} xl={5} xxl={4}>
+              {homeTeam.teamName}
+            </Col>
           </Row>
           <Row className="center-align">
-            <Col md={8}></Col>
-            <Col md={4}>Home</Col>
+            <Col xs={4} sm={6} xl={7} xxl={8}></Col>
+            <Col xs={8} sm={6} xl={5} xxl={4}>
+              Home
+            </Col>
           </Row>
         </Col>
-        <Col md={2} className="center-align">
+        <Col xs={2} className="center-align">
           X
         </Col>
         <Col className="left-align">
           <Row className="right-align">
-            <Col md={3}>
+            <Col xs={6} sm={5} xl={4} xxl={3}>
               <img
                 className="preview-logo-img"
                 src={awayTeamLogo}
                 alt={`Logo of Team ${awayTeam.teamName}`}
               ></img>
             </Col>
-            <Col md={10}></Col>
+            <Col xs={6} sm={7} xl={8} xxl={9}></Col>
           </Row>
           <Row className="center-align">
-            <Col md={4}>{awayTeam.teamName}</Col>
-            <Col md={8}></Col>
+            <Col xs={8} sm={6} xl={5} xxl={4}>
+              {awayTeam.teamName}
+            </Col>
+            <Col xs={4} sm={6} xl={7} xxl={8}></Col>
           </Row>
           <Row className="center-align">
-            <Col md={4}>Away</Col>
-            <Col md={8}></Col>
+            <Col xs={8} sm={6} xl={5} xxl={4}>
+              Away
+            </Col>
+            <Col xs={4} sm={6} xl={7} xxl={8}></Col>
           </Row>
         </Col>
       </Row>

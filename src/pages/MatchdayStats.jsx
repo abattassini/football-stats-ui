@@ -21,7 +21,6 @@ export const MatchdayStats = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(async () => {
-    console.log(`Calling api for matchday ${selectedMatchday.matchday} stats.`);
     setIsLoading(true);
     const matchdayScores = await getMatchdayScores(
       selectedMatchday.matchday,
@@ -40,8 +39,8 @@ export const MatchdayStats = () => {
 
   return (
     <section className="matchday-stats">
-      <Row className="justify-content-md-center mt-4">
-        <Col md="auto">
+      <Row className="justify-content-center mt-5">
+        <Col xs={10} sm="auto">
           <Dropdown
             options={yearOptions}
             value={selectedMatchday.seasonYear}
@@ -57,7 +56,7 @@ export const MatchdayStats = () => {
             }}
           />
         </Col>
-        <Col md="auto">
+        <Col xs={10} sm="auto">
           <Dropdown
             options={matchdayOptions}
             value={selectedMatchday.matchday}

@@ -32,7 +32,6 @@ export const GoaldScoredHomeAway = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(async () => {
-    console.log(`Calling api for goals of season ${seasonYearChart} stats.`);
     setIsLoading(true);
     const goalsEachMatchdayResponse = await getGoalsEachMatchday(
       seasonYearChart
@@ -90,11 +89,11 @@ export const GoaldScoredHomeAway = () => {
         <Loading />
       ) : (
         <Row className="mx-auto mt-5">
-          <Col sm={2}></Col>
+          <Col xs={0} sm={2}></Col>
           <Col sm={8}>
             {goalsEachMatchday && goalsEachMatchday.length > 0 ? (
               <ResponsiveContainer width="100%" height={440}>
-                <AreaChart data={goalsEachMatchday}>
+                <AreaChart data={goalsEachMatchday} margin={{ left: -30 }}>
                   <Area
                     name="Goals Scored Playing at Home"
                     dataKey="goalsScoredHome"

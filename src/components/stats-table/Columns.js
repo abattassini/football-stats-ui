@@ -20,6 +20,14 @@ const ScoreRanks = (rank) => {
   }
 };
 
+const customRankSorting = (rowA, rowB, id, desc) => {
+  if (rowB.values[id] === "A+" && rowA.values[id] !== "A+") return 1;
+  if (rowA.values[id] === "A+" && rowB.values[id] !== "A+") return -1;
+  if (rowA.values[id] > rowB.values[id]) return 1;
+  if (rowB.values[id] > rowA.values[id]) return -1;
+  return 0;
+};
+
 const SelectColumnFilter = ({ column: { setFilter, id } }) => {
   const options = [LIKELY, NEUTRAL, UNLIKELY];
 
@@ -81,6 +89,7 @@ export const Columns = [
     Filter: SelectColumnFilter,
     filter: "includesSome",
     className: "column-scoring-score",
+    sortType: customRankSorting,
   },
   {
     Header: "Conceding",
@@ -88,5 +97,6 @@ export const Columns = [
     Filter: SelectColumnFilter,
     filter: "includesSome",
     className: "column-conceding-score",
+    sortType: customRankSorting,
   },
 ];
