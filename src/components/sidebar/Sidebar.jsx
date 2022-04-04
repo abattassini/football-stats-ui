@@ -8,6 +8,7 @@ import { IconContext } from "react-icons/lib";
 import { useSelector, useDispatch } from "react-redux";
 import { updateSidebarState } from "../../actions";
 import logo from "../../images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 import "./Sidebar.css";
 
@@ -15,6 +16,7 @@ export const Sidebar = ({ callback }) => {
   const openCloseSidebar = useSelector((state) => state.openCloseSidebar);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const showSidebar = () => {
     dispatch(updateSidebarState(!openCloseSidebar));
@@ -27,7 +29,13 @@ export const Sidebar = ({ callback }) => {
           <Link className="open-close-button" to="#">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <img className="app-logo" src={logo}></img>
+          <img
+            className="app-logo"
+            src={logo}
+            onClick={() => {
+              navigate("/");
+            }}
+          ></img>
         </div>
         <nav
           className={`scroll-invisible ${

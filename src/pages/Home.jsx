@@ -24,7 +24,7 @@ export const Home = () => {
                   Predictions of Goal Scoring and Conceding
                 </Link>
                 , where a score from A+ to F is calculated to estimate the
-                chance of each team to score and concede gols on the selected
+                chance of each team to score and concede goals on the selected
                 season and matchday.
               </li>
               <li>

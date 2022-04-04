@@ -1,4 +1,4 @@
-const initialState = { seasonYear: 2019, matchday: 5 };
+const initialState = { seasonYear: 2020, matchday: 5 };
 
 export const matchdaySelectReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -9,7 +9,7 @@ export const matchdaySelectReducer = (state = initialState, action) => {
   }
 };
 
-export const seasonYearForChartReducer = (state = 2019, action) => {
+export const seasonYearForChartReducer = (state = 2020, action) => {
   switch (action.type) {
     case "SELECT_YEAR_CHART":
       return action.payload;

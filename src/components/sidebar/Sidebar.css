@@ -3,6 +3,10 @@
   margin: auto;
 }
 
+.app-logo:hover {
+  cursor: pointer;
+}
+
 .sidebar .top-bar {
   background: #15171c;
   height: 80px;
