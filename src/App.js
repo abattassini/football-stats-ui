@@ -6,6 +6,7 @@ import { MatchdayStats } from "./pages/MatchdayStats";
 import { GoaldScoredHomeAway } from "./pages/GoalsScoredHomeAway";
 import { SeasonStatsByTeam } from "./pages/SeasonStatsByTeam";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 function App() {
   const openCloseSidebar = useSelector((state) => state.openCloseSidebar);
@@ -13,6 +14,10 @@ function App() {
   return (
     <div id="app">
       <Router>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Football Stats</title>
+        </Helmet>
         <Sidebar />
         <div className={openCloseSidebar ? "margin-left" : ""}>
           <Routes>

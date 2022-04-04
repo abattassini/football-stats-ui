@@ -60,15 +60,15 @@ export const GoaldScoredHomeAway = () => {
 
   return (
     <div className="goals-scores-home-away-page">
-      <section className="info-section container-xl">
-        <Row>
-          <Col className="mt-5">
+      <section className="info-section">
+        <Row className="mt-4 justify-content-center">
+          <Col xs={11} sm={10} md={7} xxl={6}>
             <p>
               This chart presents the total quantity of Goals Scored Playing at
               Home vs. Goals Scored Playing Away on each matchday of the
               selected season year.
             </p>
-            <p>The horizontal axis represents Matchdays.</p>
+            <p> The horizontal axis represents Matchdays.</p>
             <p>The vertical axis represents Goals Scored Quantity.</p>
           </Col>
         </Row>
@@ -89,8 +89,8 @@ export const GoaldScoredHomeAway = () => {
         <Loading />
       ) : (
         <Row className="mx-auto mt-5">
-          <Col xs={0} sm={2}></Col>
-          <Col sm={8}>
+          <Col xs={0} md={2}></Col>
+          <Col xs={12} md={8}>
             {goalsEachMatchday && goalsEachMatchday.length > 0 ? (
               <ResponsiveContainer width="100%" height={440}>
                 <AreaChart data={goalsEachMatchday} margin={{ left: -30 }}>

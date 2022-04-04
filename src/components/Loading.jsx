@@ -7,7 +7,7 @@ import "./Loading.css";
 export const Loading = () => {
   return (
     <Row className="d-flex justify-content-center">
-      <Col sm="auto" className="mt-5">
+      <Col xs="auto" className="mt-5">
         <img alt="Loading" src={loadingImage} />
       </Col>
     </Row>

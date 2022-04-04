@@ -6,33 +6,50 @@ import "./Home.css";
 
 export const Home = () => {
   return (
-    <div className="home-page container-xl my-4">
-      <Row className="mt-5">
-        <Col>
+    <div className="home-page mt-4">
+      <Row className="mt-4 justify-content-center">
+        <Col xs={11} sm={10} md={8} xxl={6}>
+          <p>Welcome to Football Stats!</p>
           <p>
             This is a website where you can find predictions about football
-            matches.
+            matches and charts to visualize interesting data comparisons.
+            Currently, the available data is from seasons 2018, 2019 and 2020 of
+            Brazil League, but it could be expanded to any football league.
           </p>
           <p>
-            <br /> At the moment you can see{" "}
-            <Link to={"/main"}>Predictions of Goal Scoring and Conceding</Link>,
-            and{" "}
-            <Link to="/goals-scored-home-away">
-              a Chart Comparing Goals Scored when Playing Home vs. Away
-            </Link>
-            . The available data is from seasons 2018, 2019 and 2020 of Brazil
-            League.
+            At the moment you can see:
+            <ul>
+              <li>
+                <Link to={"/main"}>
+                  Predictions of Goal Scoring and Conceding
+                </Link>
+                , where a score from A+ to F is calculated to estimate the
+                chance of each team to score and concede gols on the selected
+                season and matchday.
+              </li>
+              <li>
+                <Link to="/goals-scored-home-away">
+                  A Comparison of Goals Scored when Playing Home vs. Away
+                </Link>
+                .
+              </li>
+              <li>
+                <Link to="/season-stats-by-team">Season Stats By Team</Link>,
+                where you can see a bar chart comparing how each team performed
+                on each season on different aspects.
+              </li>
+            </ul>
           </p>
         </Col>
       </Row>
-      <Row className="mt-3">
-        <Col>
+      {/* <Row className="justify-content-center">
+        <Col xs={11} sm={10} md={9} xl={8} xxl={6}>
           <p>
             You can also{" "}
             <Link to={"#"}>understand how the predictions are generated</Link>.
           </p>
         </Col>
-      </Row>
+      </Row> */}
     </div>
   );
 };
