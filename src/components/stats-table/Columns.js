@@ -86,10 +86,13 @@ export const Columns = [
   {
     Header: "Scoring",
     accessor: "scoringRank",
+    id: "scoringRank",
     Filter: SelectColumnFilter,
     filter: "includesSome",
     className: "column-scoring-score",
     sortType: customRankSorting,
+    tooltipText:
+      "From A+ to G, where A+ means the team is very likely to score goals, and G means it's not very likely that it will score any goal.",
   },
   {
     Header: "Conceding",
@@ -98,5 +101,7 @@ export const Columns = [
     filter: "includesSome",
     className: "column-conceding-score",
     sortType: customRankSorting,
+    tooltipText:
+      "From A+ to G, where A+ means the team is very likely to concede goals, and G means it's not very likely that it will concede any goal.",
   },
 ];

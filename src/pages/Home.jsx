@@ -43,14 +43,6 @@ export const Home = () => {
           </p>
         </Col>
       </Row>
-      {/* <Row className="justify-content-center">
-        <Col xs={11} sm={10} md={9} xl={8} xxl={6}>
-          <p>
-            You can also{" "}
-            <Link to={"#"}>understand how the predictions are generated</Link>.
-          </p>
-        </Col>
-      </Row> */}
     </div>
   );
 };

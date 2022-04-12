@@ -6,7 +6,9 @@ import * as TiIcons from "react-icons/ti";
 import { Table } from "reactstrap";
 import { RowInfo } from "./RowInfo";
 import { getMatchdayScores } from "../../utils";
+import Tippy from "@tippyjs/react";
 
+import "tippy.js/dist/tippy.css"; // optional
 import "./StatsTable.css";
 
 const DefaultColumnFilter = ({
@@ -45,6 +47,14 @@ export const StatsTable = (props) => {
         columns,
         data,
         defaultColumn,
+        initialState: {
+          sortBy: [
+            {
+              id: "scoringRank",
+              desc: false,
+            },
+          ],
+        },
       },
       useFilters,
       useSortBy,
@@ -60,39 +70,48 @@ export const StatsTable = (props) => {
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => {
                   return (
-                    <th
-                      {...column.getHeaderProps([
-                        {
-                          className: column.className,
-                        },
-                      ])}
-                    >
-                      <div>
-                        <span>{column.render("Header")}</span>
-                        <span
-                          {...column.getHeaderProps([
-                            {
-                              ...column.getSortByToggleProps(),
-                            },
-                          ])}
-                        >
-                          {" "}
-                          {column.canSort &&
-                            (column.isSorted ? (
-                              column.isSortedDesc ? (
-                                <TiIcons.TiArrowSortedDown />
-                              ) : (
-                                <TiIcons.TiArrowSortedUp />
-                              )
-                            ) : (
-                              <TiIcons.TiArrowUnsorted />
-                            ))}
+                    <Tippy
+                      disabled={!column.tooltipText}
+                      content={
+                        <span>
+                          {column.tooltipText ? column.tooltipText : ""}
                         </span>
-                      </div>
-                      <div>
-                        {column.canFilter ? column.render("Filter") : null}
-                      </div>
-                    </th>
+                      }
+                    >
+                      <th
+                        {...column.getHeaderProps([
+                          {
+                            className: column.className,
+                          },
+                        ])}
+                      >
+                        <div>
+                          <span>{column.render("Header")}</span>
+                          <span
+                            {...column.getHeaderProps([
+                              {
+                                ...column.getSortByToggleProps(),
+                              },
+                            ])}
+                          >
+                            {" "}
+                            {column.canSort &&
+                              (column.isSorted ? (
+                                column.isSortedDesc ? (
+                                  <TiIcons.TiArrowSortedDown />
+                                ) : (
+                                  <TiIcons.TiArrowSortedUp />
+                                )
+                              ) : (
+                                <TiIcons.TiArrowUnsorted />
+                              ))}
+                          </span>
+                        </div>
+                        <div>
+                          {column.canFilter ? column.render("Filter") : null}
+                        </div>
+                      </th>
+                    </Tippy>
                   );
                 })}
               </tr>
