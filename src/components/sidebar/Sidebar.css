@@ -150,7 +150,24 @@ nav {
     font-size: 25px;
   }
   .submenu-item {
-    height: 60px;
+    height: 90px;
+  }
+
+  .app-logo {
+    width: 300px;
+  }
+}
+
+@media (max-width: 550px) {
+  nav {
+    width: 85vw;
+  }
+  .menu-label,
+  .submenu-label {
+    font-size: 22px;
+  }
+  .submenu-item {
+    height: 90px;
   }
 
   .app-logo {
